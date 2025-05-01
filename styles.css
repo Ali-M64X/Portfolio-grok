@@ -10,7 +10,7 @@
 
 body {
   background-color: #222831;
-  overflow-x: hidden; /* منع التمرير الأفقي */
+  overflow-x: hidden;
 }
 
 header {
@@ -19,6 +19,8 @@ header {
   align-items: center;
   margin: 2rem auto;
   max-width: 1200px;
+  position: relative;
+  z-index: 1000;
 }
 
 .alilogo {
@@ -51,6 +53,7 @@ header {
   color: #eeeeee;
   font-size: 1.5rem;
   cursor: pointer;
+  z-index: 1001;
 }
 
 hr {
@@ -369,28 +372,37 @@ footer {
     display: block;
     position: absolute;
     right: 1rem;
-    top: 2rem; /* ضبط المكان عشان يكون جنب اللوجو */
+    top: 2rem;
+    z-index: 1001;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 100%;
-    background-color: #2c3e50;
-    padding: 1rem 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin: 0;
+    width: 250px; /* عرض ثابت عشان تبقى مرتبة */
+    background-color: rgba(44, 62, 80, 0.95); /* خلفية شبه شفافة */
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    right: -250px; /* مخفي في البداية خارج الشاشة */
+    height: 100%;
+    transition: right 0.3s ease; /* أنيميشن خفيف */
+    z-index: 1000;
   }
 
   .nav-links.active {
     display: flex;
+    right: 0; /* يظهر عند الضغط */
   }
 
   .nav-links li {
-    margin: 0.5rem 1rem;
+    margin: 1rem 0;
     text-align: left;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 0.5rem;
   }
 
   .heroSub {
@@ -424,7 +436,7 @@ footer {
   }
 
   .hamburger {
-    top: 1.5rem; /* ضبط أكتر للشاشات الصغيرة */
+    top: 1.5rem;
     right: 0.5rem;
   }
 
@@ -476,30 +488,4 @@ footer {
   }
 
   .works li img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .projectTitle,
-  .contactTitle {
-    font-size: 1.5rem;
-  }
-
-  .contact h3 {
-    font-size: 1rem;
-  }
-
-  .socialMedia {
-    gap: 1.5rem;
-  }
-
-  .socialMedia img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .footer {
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-}
+    width:
